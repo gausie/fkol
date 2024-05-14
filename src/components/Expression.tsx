@@ -33,7 +33,7 @@ export function Expression({ node, scope, reroller }: Props) {
   return (
     <Card>
       <CardBody>
-        <MathJax>{full}</MathJax>
+        <MathJax dynamic>{full}</MathJax>
       </CardBody>
     </Card>
   );
