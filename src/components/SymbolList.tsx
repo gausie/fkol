@@ -3,7 +3,7 @@ import { MathNode, isFunctionNode, isSymbolNode } from "mathjs";
 import { useMemo } from "react";
 
 function getSymbols(node: MathNode) {
-  return node
+  const symbols = node
     .filter((node, _path, parent) => {
       // Filter out non-symbol nodes.
       if (!isSymbolNode(node)) return false;
@@ -12,6 +12,8 @@ function getSymbols(node: MathNode) {
       return true;
     })
     .map((n) => n.toString());
+
+  return [...new Set(symbols)];
 }
 
 type Props = {

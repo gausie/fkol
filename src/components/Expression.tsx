@@ -12,7 +12,7 @@ type Props = {
 };
 
 export function Expression({ node, scope, reroller }: Props) {
-  const result = useMemo(() => {
+  const rhs = useMemo(() => {
     if (reroller) reroller;
     try {
       if (!node) return Q;
@@ -24,20 +24,16 @@ export function Expression({ node, scope, reroller }: Props) {
     }
   }, [node, scope, reroller]);
 
+  const full = useMemo(() => {
+    const lhs = !isConstantNode(node) || node.value ? node?.toTex() : Q;
+    if (!lhs) return "$$invalid$$";
+    return `$$${lhs} = ${rhs}$$`;
+  }, [node, rhs]);
+
   return (
     <Card>
       <CardBody>
-        <MathJax
-          renderMode="pre"
-          typesettingOptions={{ fn: "tex2chtml" }}
-          text={
-            (isConstantNode(node) && !node.value
-              ? Q
-              : node?.toTex() ?? "invalid") +
-            " = " +
-            result
-          }
-        />
+        <MathJax>{full}</MathJax>
       </CardBody>
     </Card>
   );
