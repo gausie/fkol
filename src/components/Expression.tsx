@@ -1,5 +1,6 @@
+import "katex/dist/katex.min.css";
 import { Card, CardBody } from "@chakra-ui/react";
-import { MathJax } from "better-react-mathjax";
+import Latex from "react-latex-next";
 import { MathNode, isConstantNode } from "mathjs";
 import { useMemo } from "react";
 
@@ -33,7 +34,7 @@ export function Expression({ node, scope, reroller }: Props) {
   return (
     <Card>
       <CardBody>
-        <MathJax dynamic>{full}</MathJax>
+        <Latex>{full}</Latex>
       </CardBody>
     </Card>
   );
