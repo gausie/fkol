@@ -14,7 +14,6 @@ type Props = {
 
 export function Expression({ node, scope, reroller }: Props) {
   const rhs = useMemo(() => {
-    if (reroller) reroller;
     try {
       if (!node) return Q;
       const r = node.evaluate(scope);
