@@ -21,7 +21,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: import.meta.env.GITHUB_ACTIONS_BASE ?? "/",
+    basename: process.env.GITHUB_ACTIONS_BASE ?? "/",
   },
 );
 
