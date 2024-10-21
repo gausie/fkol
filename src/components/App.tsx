@@ -1,51 +1,44 @@
-import { Button, Container, Heading, Input, Stack } from "@chakra-ui/react";
-import { MathNode, all, create, isFunctionNode } from "mathjs";
-import { useCallback, useMemo, useState } from "react";
-import { SymbolList } from "./SymbolList";
-import { Expression } from "./Expression";
+import { Box, Button, Flex, Heading } from "@chakra-ui/react";
+import { Link, Outlet } from "react-router-dom";
+import { Nav } from "./Nav";
+import { useState } from "react";
+import { SearchInput } from "./SearchInput";
 
-const math = create(all);
-
-function isRandom(node: MathNode) {
-  return (
-    node.filter((node) => {
-      if (!isFunctionNode(node)) return false;
-      return ["randomInt", "random"].includes(node.fn.name);
-    }).length > 0
-  );
-}
-
-function App() {
-  const [expression, setExpression] = useState("");
-  const [scope, setScope] = useState<Record<string, number | undefined>>({});
-
-  const node = useMemo(() => {
-    try {
-      return math.parse(expression);
-    } catch (error) {
-      return null;
-    }
-  }, [expression]);
-
-  const showReroll = useMemo(() => node && isRandom(node), [node]);
-  const [reroller, setReroller] = useState<symbol>(Symbol());
-  const reroll = useCallback(() => setReroller(Symbol()), []);
+export function App() {
+  const [query, setQuery] = useState("");
 
   return (
-    <Container pt={5}>
-      <Stack>
-        <Heading textAlign="center">Interactive Expressions</Heading>
-        <Input
-          type="text"
-          placeholder="x + 1"
-          onChange={(e) => setExpression(e.currentTarget.value)}
-        />
-        <Expression node={node} scope={scope} reroller={reroller} />
-        <SymbolList node={node} scope={scope} onChangeScope={setScope} />
-        {showReroll && <Button onClick={reroll}>Reroll random 🎲</Button>}
-      </Stack>
-    </Container>
+    <>
+      <Flex
+        as="header"
+        shadow="sm"
+        height="4.5rem"
+        px={6}
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Box>
+          <Link to="/">
+            <Heading as="h2" size="lg">
+              𝑓(KoL)
+            </Heading>
+          </Link>
+        </Box>
+        <Box flexBasis="33%">
+          <SearchInput value={query} onChange={setQuery} />
+        </Box>
+        <Box>
+          <Button as={Link} to="/playground">
+            Playground
+          </Button>
+        </Box>
+      </Flex>
+      <Flex as="main">
+        <Nav query={query} />
+        <Box p={6} flexGrow={1}>
+          <Outlet />
+        </Box>
+      </Flex>
+    </>
   );
 }
-
-export default App;

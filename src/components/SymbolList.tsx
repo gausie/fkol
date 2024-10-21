@@ -1,4 +1,12 @@
-import { Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
+import {
+  InputGroup,
+  InputLeftAddon,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+} from "@chakra-ui/react";
 import { MathNode, isFunctionNode, isSymbolNode } from "mathjs";
 import { useMemo } from "react";
 
@@ -19,23 +27,34 @@ function getSymbols(node: MathNode) {
 type Props = {
   node: MathNode | null;
   scope: Record<string, number | undefined>;
+  aliases?: Record<string, string>;
   onChangeScope: (scope: Record<string, number | undefined>) => void;
 };
 
-export function SymbolList({ node, scope, onChangeScope }: Props) {
+export function SymbolList({
+  node,
+  scope,
+  aliases = {},
+  onChangeScope,
+}: Props) {
   const symbols = useMemo(() => (node ? getSymbols(node) : []), [node]);
 
   return symbols.map((symbol) => (
     <InputGroup key={symbol}>
-      <InputLeftAddon>{symbol} =</InputLeftAddon>
-      <Input
+      <InputLeftAddon>{aliases[symbol] ?? symbol} =</InputLeftAddon>
+      <NumberInput
+        width="100%"
         value={scope[symbol] ?? ""}
-        onChange={(e) => {
-          const value = e.currentTarget.value;
+        onChange={(value) => {
           onChangeScope({ ...scope, [symbol]: Number(value) || undefined });
         }}
-        type="number"
-      />
+      >
+        <NumberInputField borderLeftRadius={0} />
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
     </InputGroup>
   ));
 }

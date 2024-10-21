@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Mmmm-brrr Mouthwash Experience",
+    "description": "Experience (in substats) granted by using an Mmmm-brrr Mouthwash",
+    "slug": "mmmmbrrr",
+    "expression": "floor(14*(C^1.7))",
+    "aliases": {
+      "C": "Cold resistance"
+    }
+  },
+  {
+    "name": "Guzzler tablet Booze Drops",
+    "description": "Percentage booze drops granted by equipping a Guzzler tablet",
+    "slug": "guzzler-booze",
+    "expression": "min(50, 1 + floor(B / 4))",
+    "aliases": {
+      "B": "Bronze deliveries"
+    }
+  },
+  {
+    "name": "Guzzler tablet HP Regen",
+    "description": "HP regen granted by equipping a Guzzler tablet",
+    "slug": "guzzler-hp",
+    "expression": "min(9, 3 + floor(power(G,0.35)) + floor(G/150))",
+    "aliases": {
+      "G": "Gold deliveries"
+    }
+  },
+  {
+    "name": "Guzzler tablet MP Regen",
+    "description": "MP regen granted by equipping a Guzzler tablet",
+    "slug": "guzzler-mp",
+    "expression": "min(7, 1 + floor(sqrt(P)) + floor(P/30))",
+    "aliases": {
+      "P": "Platinum deliveries"
+    }
+  }
+]
