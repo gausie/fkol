@@ -8,17 +8,22 @@ import { Home } from "./components/Home.tsx";
 import { Playground } from "./components/Playground.tsx";
 import { Expression } from "./components/Expression.tsx";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        { path: "/", element: <Home /> },
+        { path: "playground", element: <Playground /> },
+        { path: "e/:slug", element: <Expression /> },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <App />,
-    children: [
-      { path: "/", element: <Home /> },
-      { path: "playground", element: <Playground /> },
-      { path: "e/:slug", element: <Expression /> },
-    ],
+    basename: import.meta.env.GITHUB_ACTIONS_BASE ?? "/",
   },
-]);
+);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
