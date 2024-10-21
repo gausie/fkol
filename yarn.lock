@@ -2131,6 +2131,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fkol@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "fkol@workspace:."
+  dependencies:
+    "@chakra-ui/react": "npm:^2.10.3"
+    "@emotion/react": "npm:^11.13.3"
+    "@emotion/styled": "npm:^11.13.0"
+    "@eslint/js": "npm:^9.13.0"
+    "@types/eslint__js": "npm:^8.42.3"
+    "@types/node": "npm:^22.7.7"
+    "@types/react": "npm:^18.3.11"
+    "@types/react-dom": "npm:^18.3.1"
+    "@vitejs/plugin-react": "npm:^4.3.3"
+    eslint: "npm:^9.13.0"
+    eslint-plugin-react-refresh: "npm:^0.4.13"
+    framer-motion: "npm:^11.11.9"
+    match-sorter: "npm:^7.0.0"
+    mathjs: "npm:^13.2.0"
+    prettier: "npm:^3.3.3"
+    react: "npm:^18.3.1"
+    react-dom: "npm:^18.3.1"
+    react-icons: "npm:^5.3.0"
+    react-latex-next: "npm:^3.0.0"
+    react-router-dom: "npm:^6.27.0"
+    typescript: "npm:^5.6.3"
+    typescript-eslint: "npm:^8.10.0"
+    vite: "npm:^5.4.9"
+  languageName: unknown
+  linkType: soft
+
 "flat-cache@npm:^4.0.0":
   version: 4.0.1
   resolution: "flat-cache@npm:4.0.1"
@@ -2420,36 +2450,6 @@ __metadata:
   checksum: 10c0/1e1904ddb0cb3d6cce7cd09e27a90184908b7a5d5c21b92e232c93579d314f0b83c246ffb035493d0504b1e9147ba2c9b21df0030f48673fba0496ecd698161f
   languageName: node
   linkType: hard
-
-"interactive-expressions@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "interactive-expressions@workspace:."
-  dependencies:
-    "@chakra-ui/react": "npm:^2.10.3"
-    "@emotion/react": "npm:^11.13.3"
-    "@emotion/styled": "npm:^11.13.0"
-    "@eslint/js": "npm:^9.13.0"
-    "@types/eslint__js": "npm:^8.42.3"
-    "@types/node": "npm:^22.7.7"
-    "@types/react": "npm:^18.3.11"
-    "@types/react-dom": "npm:^18.3.1"
-    "@vitejs/plugin-react": "npm:^4.3.3"
-    eslint: "npm:^9.13.0"
-    eslint-plugin-react-refresh: "npm:^0.4.13"
-    framer-motion: "npm:^11.11.9"
-    match-sorter: "npm:^7.0.0"
-    mathjs: "npm:^13.2.0"
-    prettier: "npm:^3.3.3"
-    react: "npm:^18.3.1"
-    react-dom: "npm:^18.3.1"
-    react-icons: "npm:^5.3.0"
-    react-latex-next: "npm:^3.0.0"
-    react-router-dom: "npm:^6.27.0"
-    typescript: "npm:^5.6.3"
-    typescript-eslint: "npm:^8.10.0"
-    vite: "npm:^5.4.9"
-  languageName: unknown
-  linkType: soft
 
 "invariant@npm:^2.2.4":
   version: 2.2.4

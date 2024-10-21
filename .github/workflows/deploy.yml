@@ -42,7 +42,7 @@ jobs:
       - name: Build
         run: yarn build
         env:
-          GITHUB_ACTIONS_BASE: /interactive-expressions
+          GITHUB_ACTIONS_BASE: /fkol
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
